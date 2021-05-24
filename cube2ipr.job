@@ -1,0 +1,20 @@
+#!/bin/bash
+#SBATCH --time=0:30:00             # MAXIMUM WALLTIME
+#SBATCH --partition=gagalli-brdwl     # GALLI GROUP PRIVATE PARTITION
+#SBATCH --nodes=1                   # NUMBER OF NODES TO USE
+#SBATCH --ntasks-per-node=10
+#SBATCH --qos=gagalli-debug
+
+wf_start=64
+wf_end=73
+cube2ipr=/home/arpank/Scripts/cube2ipr/cube2ipr.sh
+
+module load parallel
+
+{
+for i in `seq ${wf_start} ${wf_end}`
+do
+sem -j +0 -k "$cube2ipr wf-${i}" 
+done
+sem --wait
+} > cube2ipr.log
