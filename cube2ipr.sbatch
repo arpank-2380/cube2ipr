@@ -6,7 +6,7 @@
 ##SBATCH --qos=gagalli-debug
 
 ############################## Load distribution ######################################################
-export I_MPI_PMI_LIBRARY=/software/slurm-current-el6-x86_64/lib/libpmi.so
+export I_MPI_PMI_LIBRARY=/software/slurm-current-el7-x86_64/lib/libpmi.so
 export I_MPI_FABRICS=shm:dapl
 export OMP_NUM_THREADS=1
 
